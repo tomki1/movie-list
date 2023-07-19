@@ -5,7 +5,7 @@ var MovieListEntry = ({movie}) => {
 
   return (
     <div className="movie-list-entry">
-      {movie}
+      {movie.title}
     </div>
   )
 }

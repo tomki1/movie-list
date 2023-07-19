@@ -13,8 +13,12 @@ const App = () => {
 
   return (
     <div>
-      <h1>Movie List</h1>
-      <MovieList movies={movies}/>
+      <div className="box">
+        <h1 className="title">Movie List</h1>
+        <div>
+          <MovieList movies={movies}/>
+        </div>
+      </div>
     </div>
   )
 };
