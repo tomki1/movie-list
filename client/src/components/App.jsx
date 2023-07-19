@@ -4,13 +4,15 @@ import sampleMovieData from '../data/sampleMovieData.js'
 import MovieList from './MovieList.jsx'
 import MovieListEntry from './MovieListEntry.jsx';
 import SearchBar from './SearchBar.jsx'
+import AddMovies from './AddMovies.jsx'
 
 const {useState} = React;
 
 const App = () => {
 
-  const [movies, setMovies] = useState(sampleMovieData);
+  const [movies, setMovies] = useState([]);
   const[searchedMovies, setSearchedMovies] = useState(movies);
+
 
   // const [query, setQuery] = useState("");
 
@@ -43,11 +45,17 @@ const App = () => {
 
   }
 
+  var showAllHandler =() => {
+    setSearchedMovies(movies);
+    }
+
+
   return (
     <div>
       <div className="box">
         <h1 className="title">Movie List</h1>
-        <SearchBar searchHandler={searchHandler}/>
+        <AddMovies movies={movies} setMovies={setMovies}/>
+        <SearchBar searchHandler={searchHandler} showAllHandler={showAllHandler}/>
         <div>
           <MovieList movies={searchedMovies}/>
         </div>
