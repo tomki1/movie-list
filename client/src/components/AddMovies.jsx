@@ -17,6 +17,7 @@ const { useState } = React;
   var handleClick = (movieToAdd) => {
     console.log('in handle click add', movieToAdd);
     var movieAdd = {title: movieToAdd};
+    movieAdd.watched = 'watched';
     console.log(movieAdd);
     setMovies([...movies, movieAdd]);
 

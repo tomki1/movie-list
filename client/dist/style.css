@@ -2,6 +2,18 @@ body {
   font-family: sans-serif, arial;
 }
 
+table {
+  border:1px solid black;
+  table-layout: fixed;
+  width: 250px;
+}
+tr {
+  border: 1px solid black;
+  text-align: left;
+  word-wrap: break-word;
+
+}
+
 .box {
   border: 2px solid gray;
   border-radius: 5px;
@@ -22,6 +34,7 @@ body {
   border-radius: 5px;
   display: inline-block;
   padding: 5px;
+
 
 
 }

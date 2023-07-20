@@ -10,7 +10,7 @@ const {useState} = React;
 
 const App = () => {
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(sampleMovieData);
   const[searchedMovies, setSearchedMovies] = useState(movies);
 
 
