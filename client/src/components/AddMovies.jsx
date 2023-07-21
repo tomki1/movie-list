@@ -5,21 +5,30 @@ const { useState } = React;
 
 
 
-  var AddMovies = ({movies, setMovies}) => {
+  var AddMovies = ({movies, setMovies, showAllHandler, setSearchedMovies}) => {
 
-  const [movieToAdd, setMovieToAdd] = useState('');
+  const [movieToAdd, setMovieToAdd] = useState({title: '', watched: false});
 
   var handleAdd = (e) => {
     console.log("handleAdd", e);
-    setMovieToAdd(e);
+    setMovieToAdd({...movieToAdd, title: e});
   }
 
   var handleClick = (movieToAdd) => {
     console.log('in handle click add', movieToAdd);
-    var movieAdd = {title: movieToAdd};
-    movieAdd.watched = 'watched';
-    console.log(movieAdd);
-    setMovies([...movies, movieAdd]);
+    var arrayCopy = [...movies];
+    console.log("array copy", arrayCopy)
+    for (var i = 0; i < arrayCopy.length; i++) {
+      if (arrayCopy[i].title === movieToAdd.title) {
+        console.log("don't add, this is a duplicate title");
+        return;
+      }
+    }
+
+    arrayCopy.push(movieToAdd);
+    setMovies(arrayCopy);
+    setSearchedMovies(arrayCopy);
+    console.log("after handle click", movies);
 
 
   }

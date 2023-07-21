@@ -1,9 +1,9 @@
 var sampleMovieData = [
-  {title: 'Mean Girls', watched: 'watched'},
-  {title: 'Hackers', watched: 'unwatched'},
-  {title: 'The Grey', watched: 'watched'},
-  {title: 'Sunshine', watched: 'unwatched'},
-  {title: 'Ex Machina', watched: 'watched'},
+  {title: 'Mean Girls', watched: false},
+  {title: 'Hackers', watched: false},
+  {title: 'The Grey', watched: true},
+  {title: 'Sunshine', watched: true},
+  {title: 'Ex Machina', watched: false},
 ];
 
 export default sampleMovieData;
