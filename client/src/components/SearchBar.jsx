@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const { useState } = React;
 
-var SearchBar = ({searchHandler, showAllHandler, filtered2}) => {
+var SearchBar = ({searchHandler, showAllHandler}) => {
 
   const [query, setQuery] = useState("");
 
@@ -14,11 +14,12 @@ var SearchBar = ({searchHandler, showAllHandler, filtered2}) => {
 
   var handleClick = (q) => {
   console.log("in handle click search", q);
-    searchHandler(q, filtered2);
+    searchHandler(q);
   }
 
   var handleShowAll = () => {
     console.log("in show all");
+    document.getElementById("movie-search").value = "";
     showAllHandler();
   }
 
@@ -30,7 +31,7 @@ var SearchBar = ({searchHandler, showAllHandler, filtered2}) => {
         placeholder="Enter Movie Title"
         onChange={(event)=> handleSearch(event.target.value)}
         />
-        <button onClick={ () => {handleClick(query, filtered2)}}>Go</button>
+        <button onClick={ () => {handleClick(query)}}>Go</button>
     </div>
     <div className="show-all">
               <button onClick={ () => {handleShowAll()}}>Show All</button>

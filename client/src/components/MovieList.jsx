@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import MovieListEntry from './MovieListEntry.jsx';
 var MovieList = ({movies, originalMovies, setMovies, searchedMovies, setSearchedMovies}) => {
 
-
   return (
     <div>
       <div className="movie-list">
@@ -13,10 +12,4 @@ var MovieList = ({movies, originalMovies, setMovies, searchedMovies, setSearched
   )
   };
 
-
-
-
-
-
-
-  export default MovieList;
+export default MovieList;

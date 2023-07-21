@@ -19,13 +19,15 @@ const { useState } = React;
     var arrayCopy = [...movies];
     console.log("array copy", arrayCopy)
     for (var i = 0; i < arrayCopy.length; i++) {
-      if (arrayCopy[i].title === movieToAdd.title) {
-        console.log("don't add, this is a duplicate title");
+      if (arrayCopy[i].title.toLowerCase() === movieToAdd.title.toLowerCase()) {
+        alert("This is a duplicate title. Please enter a different title.");
         return;
       }
     }
 
     arrayCopy.push(movieToAdd);
+    document.getElementById("add-movie").value = "";
+    document.getElementById("movie-search").value = "";
     setMovies(arrayCopy);
     setSearchedMovies(arrayCopy);
     console.log("after handle click", movies);
