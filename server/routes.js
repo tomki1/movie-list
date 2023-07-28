@@ -10,6 +10,8 @@ const controller = require('./controllers');
 // get request
 router.get('/api/movies', controller.movies.get);
 
+
+
 /*
 // post request
 router.post('/', controller.movies.post);

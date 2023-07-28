@@ -4,22 +4,16 @@ const app = express();
 const PORT = 3000 || process.env.PORT;
 
 
-// for all other requests except get to /api/movies, respond with "Hello World"
-app.all('/*', (req, res, next) => {
-  // if request is a GET to /api/movies pass control
-  if (req.url === '/api/movies' && req.method === 'GET') {
-    return next(); // pass control to the next handler
-  } else {
-  // else respond with 'Hello World'
-  res.send('Hello World');
-  }
-})
-
 // Set up routes
 app.use('/', router);
 // serve the client files
 app.use(express.static('client/dist'));
 
+// for all other requests except get to /api/movies and /, respond with "Hello World"
+app.all('/*', (req, res, next) => {
+  // else respond with 'Hello World'
+  res.send('Hello World');
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
