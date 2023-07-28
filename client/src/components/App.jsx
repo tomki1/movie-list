@@ -6,13 +6,32 @@ import MovieListEntry from './MovieListEntry.jsx';
 import SearchBar from './SearchBar.jsx'
 import AddMovies from './AddMovies.jsx'
 
-const {useState} = React;
+const {useState, useEffect} = React;
 
 const App = () => {
 
-  const [movies, setMovies] = useState(sampleMovieData);
-  const[searchedMovies, setSearchedMovies] = useState(movies);
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const[searchedMovies, setSearchedMovies] = useState([]);
 
+  // fetch movie data from server
+  const fetchMovieData = () => {
+    fetch('/api/movies')
+      .then(response => {
+        return response.json()
+      })
+      .then(movieData => {
+        console.log(movieData);
+        setMovies(movieData);
+        setSearchedMovies(movieData);
+      })
+  }
+
+  // check server for database updates
+  useEffect(() => {
+    fetchMovieData()
+    setIsLoading(false);
+  }, [])
 
   var searchHandler =(q) => {
     if (q === '') {
@@ -46,6 +65,11 @@ const App = () => {
     setSearchedMovies(toWatchArray);
   }
   }
+
+  if (isLoading) {
+    console.log('loading')
+  }
+
 
   return (
     <div>

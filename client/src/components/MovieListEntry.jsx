@@ -27,10 +27,12 @@ var MovieListEntry = ({movie, index, originalMovies, setMovies, searchedMovies, 
     return (
       <div className="movie-list-entry">
         <table>
-          <tr>
-            <td>{movie.title}</td>
-            <td><button className="watched-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value) } }>watched</button></td>
+          <tbody>
+            <tr>
+              <td>{movie.title}</td>
+              <td><button className="watched-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value) } }>watched</button></td>
             </tr>
+          </tbody>
         </table>
             {/* {movie.title}
             <button className="watched-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value)} }>watched</button> */}
@@ -40,10 +42,12 @@ var MovieListEntry = ({movie, index, originalMovies, setMovies, searchedMovies, 
     return (
     <div className="movie-list-entry">
       <table>
-        <tr>
-          <td>{movie.title}</td>
-          <td><button className="towatch-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value) } }>to watch</button></td>
+        <tbody>
+          <tr>
+            <td>{movie.title}</td>
+            <td><button className="towatch-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value) } }>to watch</button></td>
           </tr>
+        </tbody>
       </table>
     </div>
     )
