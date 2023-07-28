@@ -31,8 +31,6 @@ const { useState } = React;
     setMovies(arrayCopy);
     setSearchedMovies(arrayCopy);
     console.log("after handle click", movies);
-
-
   }
 
   return (
