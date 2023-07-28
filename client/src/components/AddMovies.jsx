@@ -7,7 +7,7 @@ const { useState } = React;
 
   var AddMovies = ({movies, setMovies, showAllHandler, setSearchedMovies}) => {
 
-  const [movieToAdd, setMovieToAdd] = useState({title: '', watched: false});
+  const [movieToAdd, setMovieToAdd] = useState({title: '', watched: 0});
 
   var handleAdd = (e) => {
     console.log("handleAdd", e);

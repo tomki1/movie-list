@@ -50,7 +50,7 @@ const App = () => {
   var showWatched = (movies) => {
     var watchedArray = [];
     for (var i=0; i < movies.length; i++) {
-    if (movies[i].watched === true) {
+    if (movies[i].watched === 1) {
       watchedArray.push(movies[i]);
     }
     setSearchedMovies(watchedArray);
@@ -59,7 +59,7 @@ const App = () => {
   var showToWatch = (movies) => {
     var toWatchArray = [];
     for (var i=0; i < movies.length; i++) {
-    if (movies[i].watched === false) {
+    if (movies[i].watched === 0) {
       toWatchArray.push(movies[i]);
     }
     setSearchedMovies(toWatchArray);

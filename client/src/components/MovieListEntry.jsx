@@ -16,14 +16,19 @@ var MovieListEntry = ({movie, index, originalMovies, setMovies, searchedMovies, 
     var entryToChange = movie.title;
     for (var i =0; i < originalCopy.length; i++) {
       if (originalCopy[i].title === entryToChange) {
-        originalCopy[i].watched = !(originalCopy[i].watched);
+        if (originalCopy[i].watched === 1) {
+          originalCopy[i].watched = 0;
+        } else {
+          originalCopy[i].watched = 1;
+        }
+
       }
     }
     setMovies(originalCopy);
   };
 
 
-  if (movie.watched === true) {
+  if (movie.watched === 1) {
     return (
       <div className="movie-list-entry">
         <table>
