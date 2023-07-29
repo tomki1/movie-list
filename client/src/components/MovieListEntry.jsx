@@ -1,59 +1,54 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 const { useState } = React;
 
 
-var MovieListEntry = ({movie, index, originalMovies, setMovies, searchedMovies, setSearchedMovies}) => {
+var MovieListEntry = ({movie, index, originalMovies, setMovies, searchedMovies, setSearchedMovies, loadMovies, showWatched, showToWatch}) => {
 
-  const [movieContents, setMovieContents] = useState({movie});
-
-  var handleWatchedChange = (movieWatchedProperty) => {
-    console.log("click watched")
-    console.log("original movies", originalMovies);
-    //copy of original
-    var originalCopy = [...originalMovies];
-    var entryToChange = movie.title;
-    for (var i =0; i < originalCopy.length; i++) {
-      if (originalCopy[i].title === entryToChange) {
-        originalCopy[i].watched = !(originalCopy[i].watched);
-      }
+  var handleWatchedChange = () => {
+    // change the movie's watch attribute
+    if (movie.watched === 0) {
+      movie.watched = 1;
+    } else {
+      movie.watched = 0;
     }
-    setMovies(originalCopy);
+
+    const options = {
+      headers: {"content-type": "application/json"}
+    }
+    // put request to change watched attribute
+    axios.put('/api/movies', movie, options)
+    .then(function (response) {
+      loadMovies(); // refresh the movie list
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   };
 
-
-  if (movie.watched === true) {
+  // show movie entry with toggle set to watched
+  if (movie.watched === 1) {
     return (
       <div className="movie-list-entry">
-        <table>
-          <tr>
-            <td>{movie.title}</td>
-            <td><button className="watched-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value) } }>watched</button></td>
+            <tr>
+              <td className="movie-title">{movie.title}</td>
+              <td className="watch-buttons"><button className="watched-button" value={movie} onClick={ () => {handleWatchedChange() } }>watched</button></td>
             </tr>
-        </table>
-            {/* {movie.title}
-            <button className="watched-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value)} }>watched</button> */}
       </div>
     )
   } else {
+    // show movie entry with toggle set to to watch
     return (
     <div className="movie-list-entry">
-      <table>
-        <tr>
-          <td>{movie.title}</td>
-          <td><button className="towatch-button" value={movie} onClick={ (e) => {handleWatchedChange(e.target.value) } }>to watch</button></td>
+          <tr>
+            <td className="movie-title">{movie.title}</td>
+            <td className="watch-buttons"><button className="towatch-button" value={movie} onClick={ () => {handleWatchedChange() } }>to watch</button></td>
           </tr>
-      </table>
     </div>
     )
   }
 }
-
-
-
-
-
-
 
 export default MovieListEntry;
