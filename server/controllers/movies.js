@@ -12,7 +12,7 @@ module.exports = {
 
   // post function will make a call to the models functions to add more movies to the database
   post: function (req, res) {
-    var params = ['Harry Potter 3', 0];
+    var params = [req.body.title, req.body.watched]; //hardcoded
     models.movies.addMovie(params)
       .then(data => res.sendStatus(201))
       .catch(err => res.sendStatus(500));

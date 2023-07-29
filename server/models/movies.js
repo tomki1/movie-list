@@ -1,5 +1,5 @@
 const db = require('../db/index.js');
-
+var Promise = require('bluebird');
 
 module.exports = {
   // database query to get all movies
@@ -18,7 +18,6 @@ module.exports = {
   // database query to add to movie database
   addMovie: function(params) {
     return new Promise ((resolve, reject) => {
-      console.log(params);
       var queryString = 'INSERT INTO movies (title, watched) VALUE (?, ?)';
       db.query(queryString, params, (err, rows) => {
         if (err) {

@@ -6,7 +6,11 @@ var MovieList = ({movies, originalMovies, setMovies, searchedMovies, setSearched
   return (
     <div>
       <div className="movie-list">
-        {movies.map((movie, index) => <MovieListEntry movie={movie} key={index} index={index} setMovies={setMovies} searchedMovies={searchedMovies} setSearchedMovies={setSearchedMovies} originalMovies={originalMovies}/>)}
+      <table>
+          <tbody>
+             {movies.map((movie, index) => <MovieListEntry movie={movie} key={index} index={index} setMovies={setMovies} searchedMovies={searchedMovies} setSearchedMovies={setSearchedMovies} originalMovies={originalMovies}/>)}
+          </tbody>
+        </table>
       </div>
     </div>
   )

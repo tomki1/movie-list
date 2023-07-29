@@ -5,6 +5,7 @@ import MovieList from './MovieList.jsx'
 import MovieListEntry from './MovieListEntry.jsx';
 import SearchBar from './SearchBar.jsx'
 import AddMovies from './AddMovies.jsx'
+import axios from "axios";
 
 const {useState, useEffect} = React;
 
@@ -14,7 +15,21 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const[searchedMovies, setSearchedMovies] = useState([]);
 
-  // fetch movie data from server
+
+  // Load movies
+  const loadMovies = () => {
+    axios
+    .get('/api/movies')
+    .then((response) => {setMovies(response.data); setSearchedMovies(response.data);})
+    .catch((error) => setError(error.message))
+    .finally(() => setIsLoading(false));
+  }
+
+  useEffect(loadMovies, []);
+
+
+/*
+  // fetch movie data from server using jquery
   const fetchMovieData = () => {
     fetch('/api/movies')
       .then(response => {
@@ -26,12 +41,14 @@ const App = () => {
         setSearchedMovies(movieData);
       })
   }
+  */
 
-  // check server for database updates
-  useEffect(() => {
-    fetchMovieData()
-    setIsLoading(false);
-  }, [])
+  // // check server for database updates
+  // useEffect(() => {
+  //   fetchMovieData()
+  //   setIsLoading(false);
+  // }, [])
+
 
   var searchHandler =(q) => {
     if (q === '') {
@@ -67,7 +84,8 @@ const App = () => {
   }
 
   if (isLoading) {
-    console.log('loading')
+    console.log("loading");
+    return null;
   }
 
 
@@ -77,7 +95,7 @@ const App = () => {
         <div className="box-title">
           <h1 className="title">Movie List</h1>
         </div>
-        <AddMovies movies={movies} setMovies={setMovies} showAllHandler={showAllHandler} setSearchedMovies={setSearchedMovies}/>
+        <AddMovies movies={movies} setMovies={setMovies} showAllHandler={showAllHandler} setSearchedMovies={setSearchedMovies} loadMovies={loadMovies}/>
         <SearchBar searchHandler={searchHandler} showAllHandler={showAllHandler}/>
         <br></br>
         <div className="button-container">

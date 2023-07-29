@@ -1,10 +1,10 @@
 const express = require('express');
+const app = express();
 const router = require('./routes.js');
 const db = require('./db/index.js')
-const app = express();
 const PORT = 3000 || process.env.PORT;
 
-
+app.use(express.json());
 // Set up routes
 app.use('/', router);
 // serve the client files
