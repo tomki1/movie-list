@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS movies;
 
 CREATE TABLE movies (
   id INT NOT NULL auto_increment,
-  title VARCHAR(200) DEFAULT NULL,
+  title VARCHAR(200) NOT NULL DEFAULT '',
   watched INT DEFAULT 0,
   PRIMARY KEY (id),
   UNIQUE (title)

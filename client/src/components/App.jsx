@@ -84,10 +84,8 @@ const App = () => {
   }
 
   if (isLoading) {
-    console.log("loading");
     return null;
   }
-
 
   return (
     <div>
@@ -103,7 +101,7 @@ const App = () => {
           <button className="towatch-button" onClick={ () => {showToWatch(movies)}} id="towatch">to watch</button>
         </div>
         <div>
-          <MovieList movies={searchedMovies} originalMovies={movies} setMovies={setMovies} searchedMovies={searchedMovies} setSearchedMovies={setSearchedMovies}/>
+          <MovieList movies={searchedMovies} originalMovies={movies} setMovies={setMovies} searchedMovies={searchedMovies} setSearchedMovies={setSearchedMovies} loadMovies={loadMovies} showWatched={showWatched} showToWatch={showToWatch}/>
         </div>
       </div>
     </div>

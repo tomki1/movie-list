@@ -8,17 +8,14 @@ var SearchBar = ({searchHandler, showAllHandler}) => {
   const [query, setQuery] = useState("");
 
   var handleSearch = (e) => {
-    console.log("handleSearch", e);
     setQuery(e);
   }
 
   var handleClick = (q) => {
-  console.log("in handle click search", q);
     searchHandler(q);
   }
 
   var handleShowAll = () => {
-    console.log("in show all");
     document.getElementById("movie-search").value = "";
     showAllHandler();
   }

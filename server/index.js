@@ -11,7 +11,7 @@ app.use('/', router);
 app.use(express.static('client/dist'));
 
 // for all other requests except get to /api/movies and /, respond with "Hello World"
-app.all('/*', (req, res, next) => {
+app.all('/*', (req, res) => {
   // else respond with 'Hello World'
   res.send('Hello World');
 });

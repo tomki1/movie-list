@@ -28,11 +28,17 @@ module.exports = {
     });
   },
 
-
   // databse query to update whether movie has been watched or needs to be watched
-  updateMovieWatch: function() {
+  updateMovieWatch: function(params) {
+    return new Promise ((resolve, reject) => {
+      var queryString = 'UPDATE movies set watched = ? where id = ?';
+      db.query(queryString, params, (err, rows) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(rows);
+      });
+    });
+  },
 
-
-
-  }
 };
