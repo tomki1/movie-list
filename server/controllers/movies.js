@@ -1,5 +1,4 @@
 var models = require('../models/index.js');
-// var testServerMovieData = require('../db/testServerMovieData.js');
 
 module.exports = {
   // get function will make a call to the models functions to get the movie data to display to client

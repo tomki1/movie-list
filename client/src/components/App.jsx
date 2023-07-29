@@ -20,13 +20,15 @@ const App = () => {
   const loadMovies = () => {
     axios
     .get('/api/movies')
-    .then((response) => {setMovies(response.data); setSearchedMovies(response.data);})
+    .then((response) => {
+      setMovies(response.data);
+      setSearchedMovies(response.data);
+    })
     .catch((error) => setError(error.message))
     .finally(() => setIsLoading(false));
   }
 
   useEffect(loadMovies, []);
-
 
 /*
   // fetch movie data from server using jquery
