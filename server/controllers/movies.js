@@ -9,16 +9,18 @@ module.exports = {
       .catch(err => console.log (err))
   },
 
-  /*
+
   // post function will make a call to the models functions to add more movies to the database
   post: function (req, res) {
-    res.send("hello from post");
-,
-  }
+    var params = ['Harry Potter 3', 0];
+    models.movies.addMovie(params)
+      .then(data => res.sendStatus(201))
+      .catch(err => res.sendStatus(500));
+  },
 
-  // put function will make a call to the models functions to update movies watched values
-  put: function (req, res) {
-    res.send("hello from put");
-  }
-  */
+  // // put function will make a call to the models functions to update movies watched values
+  // put: function (req, res) {
+  //   res.send("hello from put");
+  // }
+
 };
