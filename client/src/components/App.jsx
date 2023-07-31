@@ -30,28 +30,6 @@ const App = () => {
 
   useEffect(loadMovies, []);
 
-/*
-  // fetch movie data from server using jquery
-  const fetchMovieData = () => {
-    fetch('/api/movies')
-      .then(response => {
-        return response.json()
-      })
-      .then(movieData => {
-        console.log(movieData);
-        setMovies(movieData);
-        setSearchedMovies(movieData);
-      })
-  }
-  */
-
-  // // check server for database updates
-  // useEffect(() => {
-  //   fetchMovieData()
-  //   setIsLoading(false);
-  // }, [])
-
-
   var searchHandler =(q) => {
     if (q === '') {
       setSearchedMovies([]);
